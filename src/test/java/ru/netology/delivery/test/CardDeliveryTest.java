@@ -21,8 +21,8 @@ public class CardDeliveryTest {
 
         RegistrationByCardInfo firstSending = DataGenerator.Registration.generateByCard("ru");
 
-        String firstDate = generateDate(10);
-        String secondDate = generateDate(20);
+        String firstDate = generateDate(7);
+        String secondDate = generateDate(11);
 
         // firstSending
 

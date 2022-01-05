@@ -1,9 +1,10 @@
 package ru.netology.delivery.data;
 
 import lombok.Data;
-
+import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 
+@AllArgsConstructor
 @Data
 public class RegistrationByCardInfo {
     private final String city;

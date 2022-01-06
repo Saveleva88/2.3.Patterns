@@ -2,7 +2,6 @@ package ru.netology.delivery.data;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
-import java.time.LocalDate;
 
 @AllArgsConstructor
 @Data

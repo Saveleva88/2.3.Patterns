@@ -8,7 +8,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static org.openqa.selenium.Keys.BACK_SPACE;
-import static ru.netology.delivery.data.DataGenerator.generateDate;
+
 
 public class CardDeliveryTest {
 
@@ -18,8 +18,8 @@ public class CardDeliveryTest {
 
         RegistrationByCardInfo firstSending = DataGenerator.Registration.generateByCard("ru");
 
-        String firstDate = generateDate(7);
-        String secondDate = generateDate(11);
+        String firstDate = DataGenerator.generateDate(7);
+        String secondDate = DataGenerator.generateDate(11);
 
         // firstSending
 
@@ -30,7 +30,8 @@ public class CardDeliveryTest {
         $("[name='phone']").setValue(firstSending.getPhone());
         $("[data-test-id='agreement']").click();
         $$(".button__text").find(exactText("Запланировать")).click();
-        $(".notification__content").shouldHave(exactText("Встреча успешно запланирована на " + firstDate), Duration.ofSeconds(15));
+        $(".notification__content")
+                .shouldBe(visible).shouldHave(exactText("Встреча успешно запланирована на " + firstDate), Duration.ofSeconds(15));
 
         //secondSending
 
@@ -40,7 +41,8 @@ public class CardDeliveryTest {
         $("[data-test-id='replan-notification'] .notification__content")
                 .shouldBe(visible).shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"));
         $$(".button__text").find(exactText("Перепланировать")).click();
-        $(".notification__content").shouldHave(exactText("Встреча успешно запланирована на " + secondDate), Duration.ofSeconds(15));
+        $(".notification__content")
+                .shouldBe(visible).shouldHave(exactText("Встреча успешно запланирована на " + secondDate), Duration.ofSeconds(15));
 
     }
 }
